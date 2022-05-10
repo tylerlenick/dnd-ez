@@ -19,12 +19,9 @@
 </template>
 
 <script setup>
-//import { ref } from "vue"
-let queryString = ref('')
-let { data: res } = await useFetch(() => `https://www.dnd5eapi.co/api/${queryString.value}`, { pick: ['results'] } )
-
-
-
+    let queryString = ref('')
+    let { data: res } = await useFetch(() => `https://www.dnd5eapi.co/api/${queryString.value}`, { pick: ['results'] } )
+    
 </script>
 
 
