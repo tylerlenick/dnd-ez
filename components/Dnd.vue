@@ -1,4 +1,4 @@
-<template>
+di<template>
     <form class="justify-center	w-3/12">
         <label for="default-search"
             class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300">Search</label>
@@ -14,11 +14,17 @@
                 class="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Search Conditions, Spells..." required="">
         </div>
-        <pre>{{ res.results }}</pre>
+        <div v-if="typeof(res.results) === 'undefined'">Nothing found, type something else...</div>
+        <div v-for="(item, key, index) in res.results">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-4 border border-blue-700 rounded">
+                {{ item.name }}
+            </button>
+        </div>
     </form>
 </template>
 
 <script setup>
+
     let queryString = ref('')
     let { data: res } = await useFetch(() => `https://www.dnd5eapi.co/api/${queryString.value}`, { pick: ['results'] } )
     
