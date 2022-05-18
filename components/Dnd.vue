@@ -1,4 +1,4 @@
-di<template>
+<template>
     <form class="justify-center	w-3/12">
         <label for="default-search"
             class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300">Search</label>
@@ -15,11 +15,9 @@ di<template>
                 placeholder="Search Conditions, Spells..." required="">
         </div>
         <div v-if="typeof(res.results) === 'undefined'">Nothing found, type something else...</div>
-        <div v-for="(item, key, index) in res.results">
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-4 border border-blue-700 rounded">
-                {{ item.name }}
-            </button>
-        </div>
+        <button v-for="(item, key, index) in res.results" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-4 border border-blue-700 rounded">
+            {{ item.name }}
+        </button>
     </form>
 </template>
 
