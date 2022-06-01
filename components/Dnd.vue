@@ -15,17 +15,16 @@
                 placeholder="Search Conditions, Spells..." required="">
         </div>
         <div v-if="typeof(res.results) === 'undefined'">Nothing found, type something else...</div>
-        <button v-for="(item, key, index) in res.results" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-4 border border-blue-700 rounded">
+        <button v-for="(item, key, index) in res.results" @click="showModal=true" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-4 border border-blue-700 rounded">
             {{ item.name }}
         </button>
     </form>
+    <LazyInfoModal v-if="showModal"/>
 </template>
 
 <script setup>
-
+    let showModal = ref(false)
     let queryString = ref('')
     let { data: res } = await useFetch(() => `https://www.dnd5eapi.co/api/${queryString.value}`, { pick: ['results'] } )
     
 </script>
-
-
