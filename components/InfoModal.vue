@@ -4,7 +4,7 @@
       <img class="check" src="~/assets/check-icon.png" alt="" />
       <h6>Saved!</h6>
       <p>Your Details have been saved Successfully</p>
-      <button @click="$emit('close-modal')">Go Home</button>
+      <button>Go Home</button>
     </div>
     <div class="close">
       <img class="close-img" src="~/assets/close-icon.svg" alt="" />
